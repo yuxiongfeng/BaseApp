@@ -1,6 +1,5 @@
 package com.yxf.baseapp;
 
-import com.wms.logger.Logger;
 import com.yxf.baseapp.base.activity.BaseActivity;
 import com.yxf.baseapp.base.test.Obj;
 import com.yxf.baseapp.databinding.ActivityMainBinding;
