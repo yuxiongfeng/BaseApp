@@ -77,22 +77,11 @@ public class Density {
 
         if (activity == null || orientation == null) return;
         float targetDensity;
-
-        if (activity.getResources().getConfiguration().orientation == ORIENTATION_PORTRAIT) {
-            if (orientation == Orientation.HEIGHT) {
-                targetDensity = (appDisplayMetrics.heightPixels - barHeight) / designHeight;
-            } else {
-                targetDensity = appDisplayMetrics.widthPixels / designWidth;
-            }
+        if (orientation == Orientation.HEIGHT) {
+            targetDensity = (appDisplayMetrics.heightPixels - barHeight) / designHeight;
         } else {
-            if (orientation == Orientation.HEIGHT) {
-                targetDensity = (appDisplayMetrics.widthPixels - barHeight) / designHeight;
-            } else {
-                targetDensity = appDisplayMetrics.heightPixels / designWidth;
-            }
+            targetDensity = appDisplayMetrics.widthPixels / designWidth;
         }
-        Log.w("适配 : dpiW:",appDisplayMetrics.widthPixels/designWidth+" ,dpiH:"+appDisplayMetrics.heightPixels/designWidth+" ,dpi:"+appDensity);
-
         float targetScaledDensity = targetDensity * (appScaledDensity / appDensity);
         int targetDensityDpi = (int) (160 * targetDensity);
 

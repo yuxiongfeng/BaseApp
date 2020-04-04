@@ -1,6 +1,7 @@
 package com.yxf.baseapp.base.activity;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -11,6 +12,7 @@ import androidx.databinding.ViewDataBinding;
 import com.wms.logger.Logger;
 import com.yxf.baseapp.R;
 import com.yxf.baseapp.utils.Density;
+import com.yxf.baseapp.utils.DensityUtils;
 import com.yxf.baseapp.utils.StatusBarUtil;
 import com.yxf.baseapp.utils.Utils;
 
@@ -34,6 +36,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
         mContext = this;
         //适配相关设置
         Density.setOrientation(this, getOrientation());
+        Logger.w("density :",mContext.getResources().getDisplayMetrics().density);
         Utils.setStatusBarTextColor(this, isDarkIcon());
         long startTime = System.currentTimeMillis();
         int layoutId = inflateContentView();
@@ -70,7 +73,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
     }
 
     protected Density.Orientation getOrientation() {
-        return Density.Orientation.WIDTH;
+        return Density.Orientation.HEIGHT;
     }
 
     /**
@@ -95,17 +98,20 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
     /**
      * 初始化布局
      */
-    protected void initView(){}
+    protected void initView() {
+    }
 
     /**
      * 初始化数据
      */
-    protected void initData(){}
+    protected void initData() {
+    }
 
     /**
      * 设置监听
      */
     protected void setListener() {
+
     }
 
 }

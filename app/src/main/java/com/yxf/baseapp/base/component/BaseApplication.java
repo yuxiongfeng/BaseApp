@@ -17,7 +17,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Density.setDensity(this, 375, 667);
+        Density.setDensity(this, 660, 500);
         Logger.newBuilder()
                 .tag("base_app")
                 .showThreadInfo(false)

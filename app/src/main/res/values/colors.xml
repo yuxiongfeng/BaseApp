@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
     <color name="white">#fff</color>
+    <color name="colorPrimary">@color/colorAccent</color>
+    <!--状态栏颜色-->
+    <color name="colorPrimaryDark">@color/white</color>
+    <!--CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色-->
+    <color name="colorAccent">#3E98F5</color>
 </resources>
