@@ -9,6 +9,7 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.wms.logger.Logger;
 import com.yxf.baseapp.BuildConfig;
+import com.yxf.baseapp.utils.ActivityManager;
 import com.yxf.baseapp.utils.Density;
 
 
@@ -31,7 +32,7 @@ public class BaseEntrance {
     }
 
     /**
-     * 必须先初始化，供外界调用
+     * 必须先初始化，供外界调用（必须要调用）
      *
      * @param context
      */
@@ -47,6 +48,17 @@ public class BaseEntrance {
                 .isDebug(BuildConfig.DEBUG)
                 .build();
         mContext = context;
+        return this;
+    }
+
+    /**
+     * 注册activity的生命周期(必须要调用)
+     *
+     * @param application
+     * @return
+     */
+    public BaseEntrance registerActivityListener(Application application) {
+        ActivityManager.registerActivityListener(application);
         return this;
     }
 
@@ -73,7 +85,7 @@ public class BaseEntrance {
     }
 
     public BaseEntrance initRefresh() {
-        if (mContext==null) {
+        if (mContext == null) {
             throw new NullPointerException("context is null,please init first!");
         }
         //设置全局的Header构建器
@@ -84,7 +96,7 @@ public class BaseEntrance {
     }
 
     public BaseEntrance setDensity(int designWidth, int designHeight) {
-        if (mContext==null) {
+        if (mContext == null) {
             throw new NullPointerException("context is null,please init first!");
         }
         Density.setDensity((Application) mContext, designWidth, designHeight);
