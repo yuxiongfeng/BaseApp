@@ -73,6 +73,9 @@ public class BaseEntrance {
     }
 
     public BaseEntrance initRefresh() {
+        if (mContext==null) {
+            throw new NullPointerException("context is null,please init first!");
+        }
         //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> new ClassicsHeader(context).setSpinnerStyle(SpinnerStyle.Translate));
         //设置全局的Footer构建器
@@ -81,6 +84,9 @@ public class BaseEntrance {
     }
 
     public BaseEntrance setDensity(int designWidth, int designHeight) {
+        if (mContext==null) {
+            throw new NullPointerException("context is null,please init first!");
+        }
         Density.setDensity((Application) mContext, designWidth, designHeight);
         return this;
     }

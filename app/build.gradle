@@ -42,12 +42,12 @@ dependencies {
 }
 
 ext {
-    package_userOrg = '' //  组织名或者用户名 不填默认用户名  手动上传的时候jcenter目录：/com/yxf/androidx/baseApp/1.0.1/
+    package_userOrg = '' //  组织名或者用户名 不填默认用户名  手动上传的时候jcenter目录：/com/yxf/androidx/baseApp/1.0.1-alpha01/
     package_repo = 'coreMaven' // bintray上的仓库名，就是我们在第二步中创建的仓库名字，如果package_userOrg设置的为组织名，那么这个仓库名得属于组织的
     package_type = 'aar'  // 输出类型
     package_group = 'com.yxf.androidx' // JCenter的GroupId
     package_artifact = 'baseApp' // JCenter的ArtifactId
-    package_version = '1.0.2'  // JCenter的VersionId
+    package_version = '1.0.2-alpha01'  // JCenter的VersionId
     package_description = 'A tools for baseApp'
 
     siteUrl = 'https://github.com/yuxiongfeng92/TempConnector'
