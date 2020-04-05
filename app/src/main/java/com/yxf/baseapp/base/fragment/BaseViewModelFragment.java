@@ -1,5 +1,7 @@
 package com.yxf.baseapp.base.fragment;
 
+import android.util.Log;
+
 import androidx.databinding.Observable;
 import androidx.databinding.ViewDataBinding;
 

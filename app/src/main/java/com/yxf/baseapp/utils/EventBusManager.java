@@ -1,5 +1,7 @@
 package com.yxf.baseapp.utils;
 
+import android.util.Log;
+
 import com.wms.logger.Logger;
 
 import org.greenrobot.eventbus.EventBus;

@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- BaseEntrance application theme. -->
+    <style name="AppTheme" parent="baseAppTheme">
+    </style>
+
+</resources>

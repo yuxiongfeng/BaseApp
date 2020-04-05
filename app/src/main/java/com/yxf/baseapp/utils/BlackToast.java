@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.StringRes;
 
 import com.yxf.baseapp.R;
-import com.yxf.baseapp.base.component.BaseApplication;
+import com.yxf.baseapp.base.component.BaseEntrance;
 
 
 public class BlackToast {
@@ -27,7 +27,7 @@ public class BlackToast {
             if (TextUtils.isEmpty(message)) {
                 return;
             }
-            Context context = BaseApplication.get();
+            Context context = BaseEntrance.getInstance().get();
             if (ActivityManager.currentActivity() != null) {
                 context = ActivityManager.currentActivity();
             }
@@ -46,7 +46,7 @@ public class BlackToast {
             if (wm != null) {
                 int height = wm.getDefaultDisplay().getHeight();
                 //Toast的Y坐标是屏幕高度的1/3，不会出现不适配的问题
-                toastStart.setGravity(Gravity.TOP, 0, height / 2 - DensityUtils.dip2px(BaseApplication.get(), 50));
+                toastStart.setGravity(Gravity.TOP, 0, height / 2 - DensityUtils.dip2px(BaseEntrance.getInstance().get(), 50));
             }
             toastStart.setDuration(Toast.LENGTH_SHORT);
             toastStart.setView(toastRoot);

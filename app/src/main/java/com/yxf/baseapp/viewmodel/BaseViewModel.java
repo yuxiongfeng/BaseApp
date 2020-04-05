@@ -3,6 +3,7 @@ package com.yxf.baseapp.viewmodel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.annotation.StringRes;
 import androidx.databinding.ObservableField;
@@ -10,7 +11,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.wms.logger.Logger;
 import com.yxf.baseapp.R;
-import com.yxf.baseapp.base.component.BaseApplication;
+import com.yxf.baseapp.base.component.BaseEntrance;
 import com.yxf.baseapp.utils.ActivityManager;
 import com.yxf.baseapp.utils.CommonUtils;
 
@@ -18,7 +19,6 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import cn.pedant.SweetAlert.Type;
 
 public class BaseViewModel extends ViewModel {
-
     /**
      * 数据加载状态
      */
@@ -119,7 +119,7 @@ public class BaseViewModel extends ViewModel {
     protected void onCleared() {
         super.onCleared();
         mDialog = null;
-        Logger.w(getClass().getSimpleName() + " 销毁了");
+        Logger.d(getClass().getSimpleName() + " 销毁了");
     }
 
     /**
@@ -144,7 +144,7 @@ public class BaseViewModel extends ViewModel {
      * 获取资源字符串
      */
     public String getResString(int resId) {
-        return BaseApplication.get().getResources().getString(resId);
+        return BaseEntrance.getInstance().get().getResources().getString(resId);
     }
 
     protected Context getContext() {

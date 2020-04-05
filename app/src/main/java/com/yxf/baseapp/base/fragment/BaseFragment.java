@@ -2,13 +2,11 @@ package com.yxf.baseapp.base.fragment;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -17,7 +15,6 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
@@ -28,7 +25,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wms.logger.Logger;
 import com.yxf.baseapp.R;
 import com.yxf.baseapp.base.bean.MessageEvent;
-import com.yxf.baseapp.base.component.BaseApplication;
+import com.yxf.baseapp.base.component.BaseEntrance;
 import com.yxf.baseapp.utils.ActivityManager;
 import com.yxf.baseapp.utils.BlackToast;
 import com.yxf.baseapp.utils.CommonUtils;
@@ -83,9 +80,9 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
             } else {
                 initData();
             }
-//            if (isRegistEventBus()) {
-//                EventBusManager.getInstance().register(this);
-//            }
+            if (isRegisterEventBus()) {
+                EventBusManager.getInstance().register(this);
+            }
             Logger.w("耗时:" + (System.currentTimeMillis() - startTime) + "," + this.getClass().getSimpleName());
         } catch (Exception e) {
             e.printStackTrace();
@@ -177,7 +174,7 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
             mLoadingLayout.setLoading(generateLoadingLayout());
         }
 
-        if (BaseApplication.get().isLogin()) {
+        if (BaseEntrance.getInstance().isLogin()) {
             if (generateTimeoutLayout() != 0) {
                 mLoadingLayout.setError(generateTimeoutLayout());
             } else {
@@ -377,7 +374,7 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        Logger.w("内存不足:", getClass().getSimpleName());
+        Logger.w("内存不足:" + getClass().getSimpleName());
     }
 
     @Override
@@ -392,7 +389,7 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
 
         boolean added = isAdded();
 
-        Logger.w("getActivity():", getActivity(), ",", this.getClass().getSimpleName());
+        Logger.w("getActivity():" + this.getClass().getSimpleName());
 
         if (mDialog == null) {
             mDialog = new SweetMessageDialog(getActivity());
@@ -515,7 +512,7 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
         if (isRegisterEventBus()) {
             EventBusManager.getInstance().unregister(this);
         }
-        Logger.w("onDestroy:", this.getClass().getSimpleName());
+        Logger.w("onDestroy:" + this.getClass().getSimpleName());
         super.onDestroy();
     }
 
@@ -533,7 +530,6 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
         initData();
         isFirstLoad = false;
     }
-
 
 
 }

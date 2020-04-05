@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- BaseEntrance application theme. -->
 
     <style name="AppTheme" parent="@style/baseAppTheme">
         <!-- Customize your theme here. -->

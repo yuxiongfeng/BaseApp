@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,7 +28,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wms.logger.Logger;
 import com.yxf.baseapp.R;
 import com.yxf.baseapp.base.bean.MessageEvent;
-import com.yxf.baseapp.base.component.BaseApplication;
+import com.yxf.baseapp.base.component.BaseEntrance;
 import com.yxf.baseapp.utils.BlackToast;
 import com.yxf.baseapp.utils.Density;
 import com.yxf.baseapp.utils.EventBusManager;
@@ -63,7 +64,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
         mContext = this;
         //适配相关设置
         Density.setOrientation(this, getOrientation());
-        Logger.w("density :", mContext.getResources().getDisplayMetrics().density);
         Utils.setStatusBarTextColor(this, isDarkIcon());
         long startTime = System.currentTimeMillis();
         int layoutId = inflateContentView();
@@ -224,7 +224,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
             mLoadingLayout.setLoading(generateLoadingLayout());
         }
 
-        if (BaseApplication.get().isLogin()) {
+        if (BaseEntrance.getInstance().isLogin()) {
             if (generateTimeoutLayout() != 0) {
                 mLoadingLayout.setError(generateTimeoutLayout());
             } else {
@@ -448,7 +448,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        Logger.w("内存不足:", getClass().getSimpleName());
+        Logger.w("内存不足:" + getClass().getSimpleName());
     }
 
     /**

@@ -4,8 +4,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.NotificationManager;
-import android.app.usage.UsageStats;
-import android.app.usage.UsageStatsManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -15,7 +13,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.ViewConfiguration;
@@ -25,7 +22,7 @@ import android.widget.EditText;
 import androidx.annotation.StringRes;
 import androidx.core.app.ActivityCompat;
 
-import com.yxf.baseapp.base.component.BaseApplication;
+import com.yxf.baseapp.base.component.BaseEntrance;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -38,8 +35,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -561,7 +556,7 @@ public class CommonUtils {
 
     public static String getString(@StringRes int stringRes) {
         if (com.yxf.baseapp.utils.ActivityManager.currentActivity() == null) {
-            return BaseApplication.get().getString(stringRes);
+            return BaseEntrance.getInstance().get().getString(stringRes);
         }
         return com.yxf.baseapp.utils.ActivityManager.currentActivity().getString(stringRes);
     }

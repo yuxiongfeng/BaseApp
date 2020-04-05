@@ -28,28 +28,27 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.wms:logger:1.0.1'
-    implementation 'org.greenrobot:eventbus:3.1.1'
-
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    api 'org.greenrobot:eventbus:3.1.1'
+    api 'android.arch.lifecycle:extensions:1.1.1'
     //下拉刷新，上拉加载
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
-    implementation 'com.wms:SweetAlertDialog:1.0.0'
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
+    api 'com.wms:SweetAlertDialog:1.0.0'
+    api 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'com.wms:logger:1.0.1'
 }
 
 ext {
-    package_userOrg = '' //  组织名或者用户名 不填默认用户名  手动上传的时候jcenter目录：/com/proton/temp/tempConnector/1.0.6-alpha03/
+    package_userOrg = '' //  组织名或者用户名 不填默认用户名  手动上传的时候jcenter目录：/com/yxf/androidx/baseApp/1.0.1/
     package_repo = 'coreMaven' // bintray上的仓库名，就是我们在第二步中创建的仓库名字，如果package_userOrg设置的为组织名，那么这个仓库名得属于组织的
     package_type = 'aar'  // 输出类型
-    package_group = 'com.yxf.androidx.baseApp' // JCenter的GroupId
-    package_artifact = 'tempConnector' // JCenter的ArtifactId
-    package_version = '1.0.1'  // JCenter的VersionId
-    package_description = 'A tools for tempAlgorithm'
+    package_group = 'com.yxf.androidx' // JCenter的GroupId
+    package_artifact = 'baseApp' // JCenter的ArtifactId
+    package_version = '1.0.2'  // JCenter的VersionId
+    package_description = 'A tools for baseApp'
 
     siteUrl = 'https://github.com/yuxiongfeng92/TempConnector'
     gitUrl = 'https://github.com/yuxiongfeng92/TempConnector.git'
