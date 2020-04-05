@@ -6,4 +6,9 @@
     <color name="colorPrimaryDark">@color/white</color>
     <!--CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色-->
     <color name="colorAccent">#3E98F5</color>
+
+    <color name="color_main">#00b9ff</color>
+    <color name="color_gray_33">#333333</color>
+
+
 </resources>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BaseApp</string>
+
+    <string name="string_no_net">无网络，请检查网络连接</string>
+    <string name="string_click_refresh">点击刷新</string>
+    <string name="string_no_data">暂无数据</string>
+    <string name="string_loading">加载中</string>
 </resources>
