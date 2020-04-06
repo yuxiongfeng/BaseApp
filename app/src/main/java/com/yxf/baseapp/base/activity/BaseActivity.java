@@ -6,7 +6,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -64,6 +63,8 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
         mContext = this;
         //适配相关设置
         Density.setOrientation(this, getOrientation());
+        float density = getResources().getDisplayMetrics().density;
+        Logger.w("density is :",density);
         Utils.setStatusBarTextColor(this, isDarkIcon());
         long startTime = System.currentTimeMillis();
         int layoutId = inflateContentView();

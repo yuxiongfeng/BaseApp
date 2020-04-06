@@ -6,13 +6,10 @@ import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.util.DisplayMetrics;
-import android.util.Log;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 
 /**
  * 适配相关
