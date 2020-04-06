@@ -10,6 +10,8 @@ import android.util.DisplayMetrics;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.wms.logger.Logger;
+
 
 /**
  * 适配相关
@@ -74,14 +76,22 @@ public class Density {
 
         if (activity == null || orientation == null) return;
         float targetDensity;
+
         if (orientation == Orientation.HEIGHT) {
             targetDensity = (appDisplayMetrics.heightPixels - barHeight) / designHeight;
         } else {
             targetDensity = appDisplayMetrics.widthPixels / designWidth;
         }
-        float targetScaledDensity = targetDensity * (appScaledDensity / appDensity);
-        int targetDensityDpi = (int) (160 * targetDensity);
 
+        Logger.w("屏幕宽度：",appDisplayMetrics.widthPixels,"px ，屏幕高度 : ",appDisplayMetrics.heightPixels+"px");
+
+        Logger.w("dpiW:", appDisplayMetrics.widthPixels / designWidth
+                , ",dpiH:", appDisplayMetrics.heightPixels / designHeight, ",targetDpi:", targetDensity);
+
+        //设置 app 不随着系统字体的调整而变化,因为字体的大小也是根据density的，所以适配后保证字体大小不变，所以需要重新设置字体大小
+        float targetScaledDensity = targetDensity * (appScaledDensity / targetDensity);
+        Logger.w("字体 scaledDensity is :",targetScaledDensity);
+        int targetDensityDpi = (int) (160 * targetDensity);
         DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
         activityDisplayMetrics.density = targetDensity;
         activityDisplayMetrics.scaledDensity = targetScaledDensity;

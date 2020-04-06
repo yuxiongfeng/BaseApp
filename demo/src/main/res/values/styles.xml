@@ -1,7 +1,8 @@
 <resources>
 
     <!-- BaseEntrance application theme. -->
-    <style name="AppTheme" parent="baseAppTheme">
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:listDivider">@drawable/list_divider</item>
     </style>
 
 </resources>

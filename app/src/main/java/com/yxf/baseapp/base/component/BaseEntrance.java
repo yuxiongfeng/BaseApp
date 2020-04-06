@@ -97,7 +97,7 @@ public class BaseEntrance {
 
     public BaseEntrance setDensity(int designWidth, int designHeight) {
         if (mContext == null) {
-            throw new NullPointerException("context is null,please init first!");
+            throw new NullPointerException("application is null,please init first!");
         }
         Density.setDensity((Application) mContext, designWidth, designHeight);
         return this;

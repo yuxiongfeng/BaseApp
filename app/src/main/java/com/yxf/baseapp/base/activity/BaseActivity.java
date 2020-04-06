@@ -1,8 +1,6 @@
 package com.yxf.baseapp.base.activity;
 
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -60,17 +58,15 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
             overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_bottom);
         }
         super.onCreate(savedInstanceState);
-        mContext = this;
         //适配相关设置
         Density.setOrientation(this, getOrientation());
-        float density = getResources().getDisplayMetrics().density;
-        Logger.w("density is :",density);
-        Utils.setStatusBarTextColor(this, isDarkIcon());
-        long startTime = System.currentTimeMillis();
         int layoutId = inflateContentView();
         if (layoutId != 0) {
             binding = DataBindingUtil.setContentView(this, layoutId);
         }
+        mContext = this;
+        Utils.setStatusBarTextColor(this, isDarkIcon());
+        long startTime = System.currentTimeMillis();
         Logger.w("耗时:" + (System.currentTimeMillis() - startTime) + "," + this.getClass().getSimpleName());
         init();
         setStatusBar();
@@ -82,7 +78,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
         if (isRegisterEventBus()) {
             EventBusManager.getInstance().register(this);
         }
-
     }
 
     private boolean isDarkIcon() {
@@ -99,8 +94,12 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
     }
 
     protected void setStatusBar() {
-        StatusBarUtil.setStatusBarDrawable(this, R.drawable.drawable_status_bar);
+        StatusBarUtil.setStatusBarDrawable(this, getStatusBarDrawable());
         initToolbar();
+    }
+
+    public int getStatusBarDrawable() {
+        return R.drawable.drawable_status_bar;
     }
 
     protected void setStatusBarColor() {
@@ -108,7 +107,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
     }
 
     protected Density.Orientation getOrientation() {
-        return Density.Orientation.HEIGHT;
+        return Density.Orientation.WIDTH;
     }
 
     /**
@@ -421,18 +420,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
     }
 
     /**
-     * 设置 app 不随着系统字体的调整而变化
-     */
-    @Override
-    public Resources getResources() {
-        Resources resources = super.getResources();
-        Configuration configuration = resources.getConfiguration();
-        configuration.fontScale = 1;
-        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-        return resources;
-    }
-
-    /**
      * 根据字符串资源id返回字符串
      */
     protected String getResString(int id) {
@@ -469,7 +456,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
         mDialog.setCancelable(true);
         mDialog.setOnDismissListener(dialog -> onDialogDismiss());
     }
-
 
     protected void onDialogDismiss() {
 
