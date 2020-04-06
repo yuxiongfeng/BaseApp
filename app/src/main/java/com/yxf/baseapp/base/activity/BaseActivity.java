@@ -98,6 +98,11 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
         initToolbar();
     }
 
+    /**
+     * 创建和状态栏高度一样的半透明矩形
+     *
+     * @return
+     */
     public int getStatusBarDrawable() {
         return R.drawable.drawable_status_bar;
     }
