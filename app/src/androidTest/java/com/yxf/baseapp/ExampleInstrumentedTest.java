@@ -7,6 +7,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.wms.logger.Logger;
+import com.yxf.baseapp.utils.CommonUtils;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,5 +55,23 @@ public class ExampleInstrumentedTest {
         }).start();
 
     }
+
+
+    @Test
+    public void testEncode(){
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        String hello = CommonUtils.encodeString("hello");
+        System.out.println("hello after encode is : "+hello);
+
+//        String hello1 = CommonUtils.hexToString("hello");
+//        System.out.println("hello covert hexString is :"+hello1);
+
+        String tenToHex = Integer.toHexString(10);
+        String s = Integer.toBinaryString(10);
+        System.out.println("tenToHex: "+tenToHex+" , tenToBinary : "+s);
+
+
+    }
+
 
 }

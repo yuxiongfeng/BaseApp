@@ -1,0 +1,4 @@
+版本迭代日志：
+1.0.3-alpha01 待更新：
+  1.BaseEntrance添加私有构造器，防止外部通过new创建对象
+  2.添加get()方法mContext为空的异常处理

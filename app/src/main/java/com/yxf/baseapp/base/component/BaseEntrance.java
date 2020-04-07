@@ -16,7 +16,10 @@ import com.yxf.baseapp.utils.Density;
 public class BaseEntrance {
 
     private Context mContext;
-    private boolean mIsLogin = false;
+    private boolean mIsLogin;
+
+    private BaseEntrance() {
+    }
 
     /**
      * 获取BaseEntrance实例
@@ -63,6 +66,9 @@ public class BaseEntrance {
     }
 
     public Context get() {
+        if (mContext == null) {
+            throw new NullPointerException("mContext is null,please init first!");
+        }
         return mContext;
     }
 
@@ -84,6 +90,11 @@ public class BaseEntrance {
         return this;
     }
 
+    /**
+     * 初始化SmartRefreshLayout的默认头部和底部布局
+     *
+     * @return
+     */
     public BaseEntrance initRefresh() {
         if (mContext == null) {
             throw new NullPointerException("context is null,please init first!");
@@ -95,6 +106,13 @@ public class BaseEntrance {
         return this;
     }
 
+    /**
+     * 设置设计图上的尺寸,用于适配
+     *
+     * @param designWidth  设计图宽度（dp）
+     * @param designHeight 设计图高度（dp）
+     * @return
+     */
     public BaseEntrance setDensity(int designWidth, int designHeight) {
         if (mContext == null) {
             throw new NullPointerException("application is null,please init first!");

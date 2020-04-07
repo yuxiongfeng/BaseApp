@@ -18,7 +18,7 @@ public class App extends Application {
                 .setDensity(480, 667);//设置设计图上的尺寸
 
         Logger.newBuilder()
-                .tag("demo:")
+                .tag("demoLog")
                 .showThreadInfo(false)
                 .methodCount(1)
                 .saveLogCount(7)
