@@ -41,7 +41,7 @@ import cn.pedant.SweetAlert.Type;
 
 /**
  * @Description: activity基类
- * @Author: yxf
+ * @Author: yxfg
  * @CreateDate: 2020/4/2 9:40
  * @UpdateUser: yxf
  * @UpdateDate: 2020/4/2 9:40

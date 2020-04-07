@@ -21,6 +21,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         super.initView();
         Logger.w("now MainActivity density is :",getResources().getDisplayMetrics().density);
         Logger.w("now MainActivity density is :",getResources().getDisplayMetrics().density);
+        Logger.w("now MainActivity density is :",getResources().getDisplayMetrics().density);
+        Logger.w("now MainActivity density is :",getResources().getDisplayMetrics().density);
+        Logger.w("now MainActivity density is :",getResources().getDisplayMetrics().density);
+        Logger.w("now MainActivity density is :",getResources().getDisplayMetrics().density);
     }
 
     @Override
