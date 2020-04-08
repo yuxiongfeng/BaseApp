@@ -24,12 +24,22 @@ public class Test1Test {
     @Test
     public void add() {
 //        Assert.assertEquals(4, test1.add(2, 3), 0);
-        Assert.assertEquals(true,test1.add(2,4)==3);
+        Assert.assertEquals(true,test1.add(2,4)==6);
     }
 
     @Test
     public void sub() {
 //        Assert.assertEquals(4, test1.add(2, 3), 0);
-        Assert.assertEquals(true,test1.sub(4,3)==2);
+        Assert.assertEquals(true,test1.sub(4,3)==1);
+    }
+
+
+    //判断是否是空白字符
+    @Test
+    public void judgeIsWhiteSpace(){
+        System.out.println(Character.isWhitespace('c'));
+        System.out.println(Character.isWhitespace(' '));
+        System.out.println(Character.isWhitespace('\n'));
+        System.out.println(Character.isWhitespace('\t'));
     }
 }
