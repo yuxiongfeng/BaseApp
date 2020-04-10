@@ -46,7 +46,7 @@ public class BlackToast {
             if (wm != null) {
                 int height = wm.getDefaultDisplay().getHeight();
                 //Toast的Y坐标是屏幕高度的1/3，不会出现不适配的问题
-                toastStart.setGravity(Gravity.TOP, 0, height / 2 - DensityUtils.dip2px(BaseEntrance.getInstance().get(), 50));
+                toastStart.setGravity(Gravity.TOP, 0, height / 2 - DensityUtils.dp2px(50));
             }
             toastStart.setDuration(Toast.LENGTH_SHORT);
             toastStart.setView(toastRoot);

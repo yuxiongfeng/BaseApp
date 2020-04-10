@@ -539,7 +539,11 @@ public class StatusBarUtil {
         LinearLayout.LayoutParams params =
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight(activity));
         statusBarView.setLayoutParams(params);
-        statusBarView.setBackground(ContextCompat.getDrawable(activity, background));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            statusBarView.setBackground(ContextCompat.getDrawable(activity, background));
+        } else {
+            statusBarView.setBackgroundDrawable(ContextCompat.getDrawable(activity, background));
+        }
         statusBarView.setId(FAKE_STATUS_BAR_VIEW_ID);
         return statusBarView;
     }

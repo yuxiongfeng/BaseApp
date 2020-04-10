@@ -3,9 +3,11 @@ package com.yxf.demo;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Environment;
+import android.view.View;
 
 import androidx.annotation.RequiresApi;
 
@@ -18,6 +20,7 @@ import com.yxf.baseapp.utils.FileIOUtils;
 import com.yxf.baseapp.utils.FileUtils;
 import com.yxf.baseapp.utils.PathUtils;
 import com.yxf.baseapp.utils.TimeUtils;
+import com.yxf.baseapp.viewmodel.BaseViewModel;
 import com.yxf.demo.databinding.ActivityMainBinding;
 
 import java.io.File;
@@ -65,6 +68,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     @Override
     protected void initView() {
         super.initView();
+
         Logger.w("now MainActivity density is :", getResources().getDisplayMetrics().density);
         File[] files;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -101,6 +105,33 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         Logger.w(TAG, "内部存储中的files路径 : ", absolutePath);
         File cacheDir = getCacheDir();
         Logger.w(TAG, "内部存储缓存文件路径： ", cacheDir.getAbsolutePath());
+
+
+        String internalCachePath = PathUtils.getInternalAppCachePath() + "/database/";
+        if (!FileUtils.isFileExists(internalCachePath)) {
+            Logger.w("文件不存在");
+            boolean orExistsFile1 = FileUtils.createOrExistsFile(internalCachePath);
+            Logger.w(orExistsFile1 ? "创建cache 下的dbs目录成功" : "创建dbs目录失败");
+        } else {
+            Logger.w("目录已存在");
+        }
+
+        String testPath = PathUtils.getInternalAppCodeCacheDir() + "/test/test.txt";
+        if (!FileUtils.isFileExists(testPath)) {
+            FileUtils.createOrExistsFile(testPath);
+        }
+
+        String testDPath = PathUtils.getInternalAppDbsPath() + "/test/test.txt";
+        if (!FileUtils.isFileExists(testDPath)) {
+            FileUtils.createOrExistsFile(testDPath);
+        }
+
+
+        //mkdirs
+        String testDir = PathUtils.getInternalAppDataPath() + "/test/";
+        if (!FileUtils.isFileExists(testDir)) {
+            FileUtils.createOrExistsDir(testDir);
+        }
 
         @SuppressLint("WrongConstant")
         SharedPreferences sharedPreferences = getSharedPreferences("test_sp", Context.MODE_APPEND);
@@ -145,38 +176,39 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         Logger.w(createFileStatus ? "创建成功" : "创建失败");
         Logger.w(copy ? "copy成功" : "copy失败");
 
-        boolean copyFile = FileUtils.copyFile(PathUtils.getExternalAppFilesPath()  + "/test_log/test2.txt", PathUtils.getExternalStoragePath() + "/ttt/newtest.txt");
+        boolean copyFile = FileUtils.copyFile(PathUtils.getExternalAppFilesPath() + "/test_log/test2.txt", PathUtils.getExternalStoragePath() + "/ttt/newtest.txt");
         Logger.w(copyFile ? "copyFile成功" : "copyFile失败");
 
         List<File> files1 = FileUtils.listFilesInDir(PathUtils.getExternalStoragePath() + "/ttt");
 
 
-        long lastModified=FileUtils.getFileLastModified(PathUtils.getExternalAppFilesPath()+"/test_log/test2.txt");
-        Logger.w("last modified time is :",lastModified);
+        long lastModified = FileUtils.getFileLastModified(PathUtils.getExternalAppFilesPath() + "/test_log/test2.txt");
+        Logger.w("last modified time is :", lastModified);
 
-        String last=TimeUtils.millis2String(System.currentTimeMillis()-100000000l);
-        String start=TimeUtils.millis2String(System.currentTimeMillis()+10000000l);
-        String current=TimeUtils.millis2String(System.currentTimeMillis());
+        String last = TimeUtils.millis2String(System.currentTimeMillis() - 100000000l);
+        String start = TimeUtils.millis2String(System.currentTimeMillis() + 10000000l);
+        String current = TimeUtils.millis2String(System.currentTimeMillis());
 
         String fitTimeSpan = TimeUtils.getFitTimeSpan(start, current, 5);
-        Logger.w("fit time span :",fitTimeSpan);
+        Logger.w("fit time span :", fitTimeSpan);
 
         String fitTimeSpanByNow = TimeUtils.getFitTimeSpanByNow(last, 5);
-        Logger.w("fitTimeSpanByNow :",fitTimeSpanByNow);
+        Logger.w("fitTimeSpanByNow :", fitTimeSpanByNow);
 
 
         String friendlyTimeSpanByNow = TimeUtils.getFriendlyTimeSpanByNow(start);
-        Logger.w("friendlyTimeSpanByNow :",friendlyTimeSpanByNow);
+        Logger.w("friendlyTimeSpanByNow :", friendlyTimeSpanByNow);
 
         String chineseWeek = TimeUtils.getChineseWeek(System.currentTimeMillis());
-        Logger.w("chineseWeek :",chineseWeek);
+        Logger.w("chineseWeek :", chineseWeek);
 
         String usWeek = TimeUtils.getUSWeek(System.currentTimeMillis());
-        Logger.w("usWeek :",usWeek);
+        Logger.w("usWeek :", usWeek);
 
         int valueByCalendarField = TimeUtils.getValueByCalendarField(System.currentTimeMillis(), Calendar.YEAR);
-        Logger.w("valueByCalendarField :",valueByCalendarField);
+        Logger.w("valueByCalendarField :", valueByCalendarField);
 
+        binding.idHello.setOnClickListener(v -> startActivity(new Intent(this, StatusBarActivity.class)));
     }
 
     @Override

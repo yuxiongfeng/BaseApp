@@ -5,20 +5,30 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.yxf.baseapp.base.component.BaseEntrance;
+
 public class DensityUtils {
+
     /**
-     * convert dip to px
-     *
-     * @param context context
-     * @param dpValue dip value
-     * @return dp value
+     * convert dp to px
+     * @param dp
+     * @return
      */
-    public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
+    public static int dp2px(float dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, BaseEntrance.getInstance().get().getResources().getDisplayMetrics());
+    }
+
+    /**
+     * convert sp to px
+     * @param sp
+     * @return
+     */
+    public static int sp2px(float sp){
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,sp,BaseEntrance.getInstance().get().getResources().getDisplayMetrics());
     }
 
     /**
@@ -30,6 +40,17 @@ public class DensityUtils {
      */
     public static int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
+    /**
+     * convert px to sp
+     * @param context
+     * @param pxValue
+     * @return
+     */
+    public static int px2sp(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / scale + 0.5f);
     }
 

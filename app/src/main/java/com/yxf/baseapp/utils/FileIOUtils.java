@@ -26,26 +26,21 @@ import java.util.List;
  *     author: yxf
  *     desc  : utils about file io
  *     功能概览：
+ *      写入：
+ *      · writeFileFromIS() 把inputStream 流 写入文件
+ *      · writeFileFromBytesByStream() 把字符数组写入文件
+ *      · writeFileFromBytesByChannel() 把字符数组通过FileChannel写入文件（效率高点）
+ *      · writeFileFromBytesByMap() 把字符数组通过mapped写入文件（用在大文件写入时候效率高）
+ *      · writeFileFromString() 把字符串写入文件
  *
- *    写入：
- *      · 把inputStream 流 写入文件
+ *      读取：
+ *      ·readFile2List  把文件转为字符串数组（BufferedReader整行读取），每行内容为一个item
+ *      ·readFile2String 把文件转为字符串
+ *      ·readFile2BytesByStream 把文件转为字符数组，通过fileInputString
+ *      ·readFile2BytesByChannel 把文件转为字符数组，通过fileChannel
+ *      ·readFile2BytesByMap 把文件转为字符数据，通过mapped（读大文件）
  *
- *      · 把字符数组写入文件
- *         把字符数组通过FileChannel写入文件（效率高点）
- *         把字符数组通过mapped写入文件（用在大文件写入时候效率高）
- *
- *       ·把字符串写入文件
- *
- *    读取：
- *        ·readFile2List  把文件转为字符串数组（BufferedReader整行读取），每行内容为一个item
- *        ·readFile2String 把文件转为字符串
- *        ·readFile2BytesByStream 把文件转为字符数组，通过fileInputString
- *        ·readFile2BytesByChannel 把文件转为字符数组，通过fileChannel
- *        ·readFile2BytesByMap 把文件转为字符数据，通过mapped（读大文件）
- *
- *
- *
- *     setBufferSize() 设置字符数组buffer的大小
+ *      ·setBufferSize() 设置字符数组buffer的大小
  *
  * </pre>
  */

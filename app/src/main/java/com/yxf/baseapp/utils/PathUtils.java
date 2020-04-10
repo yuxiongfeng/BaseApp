@@ -9,6 +9,31 @@ import java.io.File;
 
 /**
  * 文件路径工具
+ *
+ * 功能概念：
+ *   ·内部存储(internal)路径
+ *    getRootPath() /system
+ *    getDataPath() /data
+ *    getDownloadCachePath() /cache
+ *    getInternalAppDataPath() /data/data/packageName
+ *    getInternalAppCodeCacheDir() /data/data/packageName/code_cache //自定义目录,用于缓存一些数据
+ *    getInternalAppDbsPath() /data/data/packageName/databases  //自定义目录，主要用于保存一些数据库数据
+ *    getInternalAppFilesPath() /data/data/packageName/files  //本地文件路径
+ *    getInternalAppSpPath() /data/data/packageName/shared_prefs //本地sharedPrefs目录
+ *
+ *
+ *
+ *    ·外部存储(external)路径
+ *      getExternalStoragePath()   /storage/emulated/0/   外部存储根目录
+ *      getExternalMusicPath() /storage/emulated/0/Music
+ *      getExternalAppDataPath() /storage/emulated/0/Android/data/packageName/
+ *      getExternalAppCachePath() /storage/emulated/0/Android/data/packageName/cache
+ *      getExternalAppFilesPath() /storage/emulated/0/Android/data/packageName/files
+ *      isExternalStorageDisable() //判断外置sdk是否可用
+ *
+ *
+ *
+ *
  */
 public class PathUtils {
 

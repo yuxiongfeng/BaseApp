@@ -156,7 +156,7 @@ public class ActivityManager {
     /**
      * 结束所有activity除了根activity
      */
-    public static void finishAllExcept(Class rootActivity) {
+    public static void finishAllExceptRoot(Class rootActivity) {
         if (mActivitys == null || rootActivity == null) {
             return;
         }
